@@ -2,7 +2,7 @@ language: bash
 services: docker
 
 env:
-- BACK_URL="http://les.viter.dk:3000" FRONT_URL="http://runner:3000"
+- BACK_URL="http://les.viter.dk:3030" FRONT_URL="http://runner:3000"
 
 script:
 - docker build -t lesfrontstaging:latest .
