@@ -5,9 +5,8 @@ let browser: Browser;
 let page: Page;
 
 beforeAll(async () => {
-  browser = await puppeteer.launch({headless: true, slowMo: 0, args: ['--no-sandbox', '--disable-setuid-sandbox']});
+  browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/google-chrome', slowMo: 0, args: ['--no-sandbox', '--disable-setuid-sandbox']});
   page = await browser.newPage();
-  console.log(FRONT_URL);
 });
 
 afterAll(async () => {
