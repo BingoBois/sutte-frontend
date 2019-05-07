@@ -4,7 +4,7 @@ let browser: puppeteer.Browser;
 let page: puppeteer.Page;
 
 beforeAll( async () => {
-    browser = await puppeteer.launch({headless: true, slowMo: 0});
+    browser = await puppeteer.launch({headless: true, slowMo: 0, args: ['--no-sandbox', '--disable-setuid-sandbox']});
     page = await browser.newPage();
 })
 
