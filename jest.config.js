@@ -1,16 +1,13 @@
-{
+module.exports = {
     "preset": "jest-puppeteer",
-    "testEnvironment": "node",
-    "transform": {
-        "^.+\\.ts$": "ts-jest"
+    "moduleNameMapper": {
+      "\\.(css)$": "jest-css-modules"
     },
-    "moduleFileExtensions": [
-        "ts",
-        "js",
-        "json",
-        "node"
-    ],
-    "testMatch": [ "**/tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)" ],
+    "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "testRegex": ".test.(ts|tsx?)$",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
         "src/**/*.{ts,js}",
@@ -22,4 +19,4 @@
         "lcov"
       ],
     "collectCoverage": true
-}
+  };
