@@ -1,3 +1,4 @@
+/*
 module.exports = {
     server: {
       command: `webpack-dev-server --mode development --hot --progress --color --port 3000`,
@@ -6,3 +7,4 @@ module.exports = {
       debug: true,
     },
   }
+*/
