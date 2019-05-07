@@ -6,4 +6,7 @@ module.exports = {
       launchTimeout: 10000,
       debug: true,
     },
+    launch: {
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    },
   }
