@@ -4,7 +4,7 @@ let browser: puppeteer.Browser;
 let page: puppeteer.Page;
 
 beforeAll( async () => {
-    browser = await puppeteer.launch({headless: true});
+    browser = await puppeteer.launch({headless: true, slowMo: 0, executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process']});
     page = await browser.newPage();
 })
 
