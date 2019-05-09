@@ -3,8 +3,20 @@ import * as puppeteer from 'puppeteer';
 let browser: puppeteer.Browser;
 let page: puppeteer.Page;
 
-beforeAll( async () => {
-    browser = await puppeteer.launch({headless: true, slowMo: 0, executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process']});
+beforeAll(async () => {
+    browser = process.env.ISDEBUG ? await puppeteer.launch(
+        {
+            headless: true,
+            slowMo: 0, 
+            executablePath: '/usr/bin/google-chrome',
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process']
+        }) :
+        await puppeteer.launch(
+            {
+                headless: true,
+                slowMo: 0,
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
+            })
     page = await browser.newPage();
 })
 

@@ -2,8 +2,8 @@ language: bash
 services: docker
 
 env:
-- BACK_URL="http://les.viter.dk:3030"
+- BACK_URL="http://les.viter.dk:3030" ISDEBUG="TRUE"
 
 script:
 - docker build -t lesfrontstaging:latest .
-- docker run -e BACK_URL=$BACK_URL --name tester lesfrontstaging:latest npm test
+- docker run -e BACK_URL=$BACK_URL -e ISDEBUG=$ISDEBUG --name tester lesfrontstaging:latest npm test
