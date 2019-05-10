@@ -23,9 +23,9 @@ beforeAll(async () => {
 
 describe("Puppeteer test", () => {
     test("Pinging sutte-frontend", async () => {
-        await page.goto('http://localhost:3000');
+        await page.goto('http://localhost:3000/');
         let html = await page.evaluate(() => document.body.innerHTML);
-        expect(html).toContain("Sut");
+        expect(html).toContain("sut");
         await browser.close();
     })
 })

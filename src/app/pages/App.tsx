@@ -26,7 +26,7 @@ class App extends React.Component<any, any>{
         borderRadius: 5,
         padding: 10
       }} className="App">
-          <p>Loading data</p>
+          <p>Loading sut</p>
           <img style={{ height: '10vh' }} src={logo} alt="Logo" />
       </div>
     );

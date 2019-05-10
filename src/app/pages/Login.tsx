@@ -2,7 +2,7 @@ import * as React from 'react';
 import './styles/App.css';
 // @ts-ignore
 import logo from '../../assets/loading.gif';
-import { login } from '../../api/api'
+//import { login } from '../../api/api'
 
 class Login extends React.Component<any, any>{
 
@@ -18,7 +18,7 @@ class Login extends React.Component<any, any>{
   }
 
   doLogin(){
-    login(this.state.email, this.state.password);
+    //login(this.state.email, this.state.password);
   }
 
   render() {
