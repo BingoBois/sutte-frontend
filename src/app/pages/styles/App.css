@@ -1,4 +1,6 @@
 html, body {
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #CFD8DC;
   margin:0;
   padding:0;
 }

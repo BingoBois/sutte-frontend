@@ -13,7 +13,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "jest --forceExit --detectOpenHandles --maxWorkers=10 --coverage",
-    "start": "webpack-dev-server --mode development --hot --progress --color --port 3000 --open",
+    "start": "webpack-dev-server --mode development --hot --progress --color --port 3000 --open --host 0.0.0.0",
     "build": "webpack -p --progress --colors",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "make-badges": "node_modules/.bin/jest-badges-readme",
@@ -66,6 +66,8 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "history": "4.9.0",
     "react": "^16.8.1",

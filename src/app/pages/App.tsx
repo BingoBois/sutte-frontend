@@ -1,22 +1,33 @@
 import * as React from 'react';
 import './styles/App.css';
+// @ts-ignore
+import logo from '../../assets/loading.gif';
 
-class App extends React.Component{
+class App extends React.Component<any, any>{
+
+  constructor(props: any){
+    super(props);
+    this.state={
+      bingo: ""
+    }
+  }
+
+  async componentWillMount(){
+  }
+
   render(){
     return (
       <div style={{
-        backgroundColor: "#282c34",
+        backgroundColor: "#607d8b",
         display: "flex",
         flexDirection: "column",
-        height: "100vh"
+        height: "100vh",
+        margin: 20,
+        borderRadius: 5,
+        padding: 10
       }} className="App">
-        <header
-        style={{
-          
-        }}
-        className="App-header">
-          sut
-        </header>
+          <p>Loading data</p>
+          <img style={{ height: '10vh' }} src={logo} alt="Logo" />
       </div>
     );
   }

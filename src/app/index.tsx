@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { Route, Switch } from 'react-router';
-import {} from 'react-router-dom'
+import { Route } from 'react-router';
+import { Router } from 'react-router-dom'
 import { hot } from 'react-hot-loader';
-import MainApp from './pages/Main'
+import MainApp from './pages/App'
+import { createBrowserHistory } from 'history';
+import Header from '../components/Header'
+import Login from './pages/Login';
+
+// prepare store
+const history = createBrowserHistory();
 
 export const App = hot(module)(() => (
-  <Router>
-                <div>
-                    <Route path="/" component={HeaderBar} />
-                    <Route exact path="/" component={MainScreen} />
+            <Router history={history}>
+                    <Route path="/" component={Header} />
+                    <Route exact path="/" component={MainApp} />
                     <Route exact path="/login" component={Login} />
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/resetPassword" component={ResetPassword} />
-                    <Route path="/post" component={PostScreen} />
-                    <Route exact path="/newpost" component={NewPostScreen} />
-                </div>
             </Router>
 ));
