@@ -13,7 +13,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "jest --forceExit --detectOpenHandles --maxWorkers=10 --coverage",
-    "start": "webpack-dev-server --mode development --hot --progress --color --port 3000 --host 127.0.0.1",
+    "start": "webpack-dev-server --mode development --hot --progress --color --port 3000 --host 0.0.0.0",
     "build": "webpack -p --progress --colors",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "make-badges": "node_modules/.bin/jest-badges-readme",

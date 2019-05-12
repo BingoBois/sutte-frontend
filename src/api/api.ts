@@ -1,7 +1,7 @@
 // import { IAccount } from 'types/types';
 import axios from 'axios';
 import { IAccount } from 'types/types';
-const BACKEND_URL = "http://les.viter.dk:3030"
+const BACKEND_URL = process.env.BACK_URL ? process.env.BACK_URL : "http://localhost:3000"
 
 export function login(email: string, password: string): Promise<any> {
   return new Promise((resolve, reject) => {
