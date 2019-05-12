@@ -140,6 +140,7 @@ module.exports = {
     contentBase: sourcePath,
     hot: true,
     inline: true,
+    disableHostCheck: true,
     historyApiFallback: {
       disableDotRule: true
     },

@@ -1,0 +1,23 @@
+function fl(n,w,h)
+{  
+   var rf = document.referrer;
+   if(self.name !="") window.location.href = "error1.html";
+   if(top != self) window.location.href = "error1.html";
+	document.write('<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="'+w+'" height="'+h+'">\n');
+    document.write('<PARAM name="movie" value="file/'+n+'"><param name="bgcolor" value="#000000" />\n');
+    document.write('<PARAM name="quality" value="high"><PARAM name="menu" value="false"><param name="scale" value="noborder" /><param name="allowScriptAccess" value="always">\n');
+    document.write('<EMBED src="file/'+n+'" width="'+w+'" height="'+h+'" QUALITY="high" scale="noborder" menu="false" bgcolor="#000000" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer" TYPE="application/x-shockwave-flash" allowScriptAccess="always"></EMBED>\n');
+    document.write('</OBJECT>\n');
+}
+
+function flw(n,w,h)
+{  
+   var rf = document.referrer;
+   if(self.name !="") window.location.href = "error1.html";
+   if(top != self) window.location.href = "error1.html";
+	document.write('<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=11,1,0,0" width="'+w+'" height="'+h+'">\n');
+    document.write('<PARAM name="movie" value="file/'+n+'"><param name="wmode" value="opaque"><param name="bgcolor" value="#000000">\n');
+    document.write('<PARAM name="quality" value="high"><PARAM name="menu" value="false"><param name="scale" value="noborder" /><param name="allowScriptAccess" value="sameDomain">\n');
+    document.write('<EMBED src="file/'+n+'" width="'+w+'" height="'+h+'" QUALITY="high" scale="noborder" menu="false" bgcolor="#000000" wmode="opaque" PLUGINSPAGE="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" allowScriptAccess="sameDomain"></EMBED>\n');
+    document.write('</OBJECT>\n');
+}

@@ -1,29 +1,33 @@
-/*
-import nodeFetch from 'node-fetch';
-
+// import { IAccount } from 'types/types';
+import axios from 'axios';
+import { IAccount } from 'types/types';
 const BACKEND_URL = "http://les.viter.dk:3030"
 
 export function login(email: string, password: string): Promise<any> {
   return new Promise((resolve, reject) => {
-    nodeFetch(`${BACKEND_URL}/auth/login`, {
-      method: 'post',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
+    axios({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      data: JSON.stringify({email, password}),
+      url: `${BACKEND_URL}/auth/login`
+    }).then(r => {
+      if(r.data.err){ reject(r.data) }
+      resolve(r.data)
     })
-      .then(res => res.json())
-      .then(json => resolve(json));
   })
 }
 
-export function register(email: string, password: string): Promise<any> {
+export function register(account: IAccount): Promise<boolean> {
   return new Promise((resolve, reject) => {
-    nodeFetch(`${BACKEND_URL}/auth/register`, {
-      method: 'post',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
+    axios({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      data: JSON.stringify(account),
+      url: `${BACKEND_URL}/auth/register`
+    }).then(r => {
+      if(r.data.err){ reject(r.data) }
+      console.log(r.data)
+      resolve(r.data)
     })
-      .then(res => res.json())
-      .then(json => resolve(json));
-  });
+  })
 }
-*/

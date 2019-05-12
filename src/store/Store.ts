@@ -1,15 +1,16 @@
 import { observable, action } from 'mobx';
+import { IAccount } from 'types/types';
 
 class Store {
-    @observable private sut: string = "";
+    @observable private user: IAccount | undefined;
 
     @action
-    public setSut(newSut: string){
-        this.sut = newSut;
+    public setUser(newUser: IAccount){
+        this.user = newUser;
     }
 
-    public getSut(){
-        return this.sut;
+    public getUser(){
+        return this.user;
     }
 }
 

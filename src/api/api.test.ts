@@ -1,7 +1,6 @@
 //import { login, register } from './api'
 //import { IAccount } from '../types/types'
-
-jest.mock('./api')
+import { login } from './mocks/api.mock'
 
 /*
 
@@ -13,17 +12,9 @@ id: number,
 
 */
 
-describe("Integration test REST", () => {
-  test("Testing API", async () => {
-
-  })
-})
-
 describe("Testing login and register", () => {
   test("Testing login", async () => {
-    //const mockedAccount: IAccount = { email: "bingo@b.dk", id: 1, name: "Vikto Kim", pass: "bingo1234", role: "teacher" }
-    //login = jest.fn((email: string, password: string) => mockedAccount)
-
+    expect(await login("sutteman@bingo.dk", "bingo1234"))
   })
 
   test("Testing register", async () => {

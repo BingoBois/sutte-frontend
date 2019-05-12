@@ -2,23 +2,52 @@ import * as React from 'react';
 import './styles/App.css';
 // @ts-ignore
 import logo from '../../assets/loading.gif';
-//import { login } from '../../api/api'
+import { login, register } from '../../api/api'
 
-class Login extends React.Component<any, any>{
+interface State{
+  email: string;
+  password: string;
+  role: string;
+  name: string;
+  err: string | undefined;
+  type: "login" | "register";
+}
+
+class Login extends React.Component<any, State>{
 
   constructor(props: any) {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      role: "teacher",
+      name: "",
+      err: "",
+      type: "login"
     }
   }
 
   async componentWillMount() {
   }
 
-  doLogin(){
-    //login(this.state.email, this.state.password);
+  async doLogin() {
+    this.setState({ err: undefined })
+    try {
+      console.log(await login(this.state.email, this.state.password));
+    } catch (err) {
+      this.setState({ err: err.err })
+    }
+  }
+
+  async doRegister(){
+    this.setState({ err: undefined })
+    try {
+      if(await register({email: this.state.email, name: this.state.name, id: -1, pass: this.state.password, role: this.state.role})){
+        this.setState({err: undefined, type: "login"})
+      }
+    } catch (err) {
+      this.setState({ err: err.err })
+    }
   }
 
   render() {
@@ -46,16 +75,43 @@ class Login extends React.Component<any, any>{
             padding: 10
           }}
         >
-              <input style={inputs} placeholder="Email..." type="text" value={this.state.value} onChange={(value) => {
-                this.setState({email: value})
-              }} />
-              <div style={{height: "1px"}}></div>
-              <input style={inputs} placeholder="Password..." type="text" value={this.state.value} onChange={(value) => {
-                this.setState({email: value})
-              }} 
-              />
-              <div style={{height: "1px"}}></div>
-            <input style={button} type="submit" value="Login" onClick={() => {this.doLogin()}} />
+          <input style={inputs} placeholder="Email..." type="text" value={this.state.email} onChange={(value) => {
+            this.setState({ email: value.target.value })
+          }} />
+          <div style={{ height: "1px" }}></div>
+          <input style={inputs} placeholder="Password..." type="password" value={this.state.password} onChange={(value) => {
+            this.setState({ password: value.target.value })
+          }}
+          />
+          {
+            this.state.type === "register" ? (
+              <div>
+                <input style={inputs} placeholder="Name..." type="text" value={this.state.name} onChange={(value) => {
+                  this.setState({ name: value.target.value })
+                }} />
+                <div style={{ height: "1px" }}></div>
+                <label>
+                  Pick user type
+                  <select value={this.state.role} onChange={(value) => {this.setState({role: value.target.value})}}>
+                    <option value="teacher">Teacher</option>
+                    <option value="student">Student</option>
+                  </select>
+                </label>
+              </div>
+            ) : undefined
+          }
+          <div style={{ height: "1px" }}></div>
+          
+            <input style={button} type="submit" value={this.state.type === "login" ? "Login" : "Register"} 
+            onClick={() => { this.state.type === "login" ? this.doLogin() : this.doRegister() }} /> 
+          
+          {
+            this.state.type === "login" ? (<input style={button} type="submit" value="Register" onClick={() => { this.setState({type: this.state.type === "login" ? "register" : "login"}) }} />) : undefined 
+          }
+          
+          {
+            this.state.err ? (<p style={{ fontSize: "18", color: "red", fontWeight: "bold" }}>{this.state.err}</p>) : null
+          }
         </div>
       </div>
 
